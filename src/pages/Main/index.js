@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Container, Form } from './styles';
 import api from '../../services/api';
@@ -7,10 +7,16 @@ import CompareList from '../../components/CompareList';
 import logo from '../../assets/gitcompare-logo.png';
 
 const Main = () => {
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState(
+    JSON.parse(localStorage.getItem('repositories')) || [],
+  );
   const [repoInput, setRepoInput] = useState('');
   const [repoError, setRepoError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('repositories', JSON.stringify(repositories));
+  }, [repositories]);
 
   const handleAddRepository = async (e) => {
     e.preventDefault();
