@@ -22,6 +22,7 @@ export const Repository = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 
     padding: 30px;
 
@@ -59,5 +60,48 @@ export const Repository = styled.div`
         background: #f5f5f5;
       }
     }
+  }
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #555;
+  font-size: 14px;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: #aaa;
+  }
+`;
+
+export const UpdateButton = styled.button`
+  margin-top: 15px;
+  padding: 10px 30px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-weight: bold;
+
+  &:hover {
+    background: #777;
+    color: #fff;
+    border: 1px solid #777;
   }
 `;

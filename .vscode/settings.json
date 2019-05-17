@@ -6,5 +6,6 @@
 
   "html.suggest.html5": true,
 
-  "explorer.openEditors.visible": 5
+  "explorer.openEditors.visible": 5,
+  "editor.renderLineHighlight": "all"
 }

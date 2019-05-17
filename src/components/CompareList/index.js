@@ -1,15 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Repository } from './styles';
+import {
+  Container, Repository, CloseButton, UpdateButton,
+} from './styles';
 
-const CompareList = ({ repositories }) => (
+const CompareList = ({
+  repositories, onClickRemove, onClickUpdate, loading, updateId,
+}) => (
   <Container>
     {repositories.map(repo => (
       <Repository key={repo.id}>
         <header>
+          <CloseButton type="button" onClick={() => onClickRemove(repo.id)}>
+            <i className="fas fa-times" />
+          </CloseButton>
           <img src={repo.owner.avatar_url} alt={repo.owner.login} />
           <strong>{repo.name}</strong>
           <small>{repo.owner.login}</small>
+
+          <UpdateButton type="button" onClick={() => onClickUpdate(repo.id)}>
+            {loading && updateId === repo.id ? (
+              <i className="fa fa-spinner fa-pulse" />
+            ) : (
+              'Update Info'
+            )}
+          </UpdateButton>
         </header>
 
         <ul>
@@ -46,6 +61,10 @@ CompareList.propTypes = {
       lastCommit: PropTypes.string,
     }),
   ).isRequired,
+  onClickRemove: PropTypes.func.isRequired,
+  onClickUpdate: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  updateId: PropTypes.number,
 };
 
 export default CompareList;
