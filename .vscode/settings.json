@@ -4,5 +4,8 @@
 
   "prettier.eslintIntegration": true,
 
-  "html.suggest.html5": true
+  "html.suggest.html5": true,
+
+  "explorer.openEditors.visible": 5,
+  "editor.renderLineHighlight": "all"
 }
